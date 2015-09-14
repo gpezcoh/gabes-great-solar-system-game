@@ -1,0 +1,140 @@
+html{
+    min-height:100%;/* make sure it is at least as tall as the viewport */
+    position:relative;
+    background-color: black;
+
+}
+body{
+    height:100%
+}
+#universe{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    overflow:hidden;
+    z-index:-1;
+    background-color: black;
+}
+
+#interface{
+	pointer-events: none;
+	z-index: 3;
+	position: fixed;
+	min-height: 100%;
+	min-width: 100%;
+	background-color: transparent;
+}
+
+.galaxy{
+	position: absolute;
+	width: 0px;
+	height: 0px;
+	z-index: 1;
+	left: 0px;
+	top: 0px;
+	background-color: white;
+	border-radius: 50%;
+	opacity: 0;
+}
+
+.edge{
+	line-height: 0px;
+	position: absolute;
+	width: 0px;
+	height: 0px;
+	left: 0px;
+	top: 0px;
+	background-color: white;
+	z-index: 0;
+	opacity: 0;
+	color: white;
+	text-align: center;
+}
+
+.visited{
+/*	background-color: #00FF00;
+	opacity: 0.8;*/
+}
+
+#player{
+	z-index: 2;
+	position: relative;
+	width: 0;
+/*  border-bottom:solid 0px red;
+    border-right:solid 1px transparent;
+    border-left:solid 1px transparent;*/
+}
+
+#healthBar{
+	position: fixed;
+	right: 0;
+	width: 104px;
+	height: 44px;
+	background-color: #F5A9A9;
+	border: solid 2px white;
+}
+
+#healthBarInside{
+	width: 100px;
+	height: 40px;
+	background-color: red;
+}
+
+#healthBarText{
+	position: fixed;
+	right: 120px;
+	top: 12px;
+	color: white;
+}
+
+#fuelBar{
+	z-index: 2;
+	position: fixed;
+	right: 0;
+	top: 42px;
+	width: 104px;
+	height: 44px;
+	background-color: #A9E2F3;
+	border: solid 2px white;
+}
+
+#fuelBarInside{
+	z-index: 2;
+	width: 100px;
+	height: 40px;
+	background-color: #01A9DB;
+}
+
+#fuelBarText{
+	position: fixed;
+	right: 120px;
+	top: 56px;
+	color: white;
+}
+
+.edgeText{
+	position: absolute;
+	color: white;
+}
+
+.planet{
+	position: relative;
+	background-color: white;
+	border-radius: 50%;
+	opacity: 0;
+	overflow: hidden;
+	color: white;
+	font-size: 10px;
+}
+
+.planetLabel{
+	position: relative;
+	color: white;
+	font-size: 1px;
+	background-color: transparent;
+	opacity: 0;
+	/*width: 10px;
+	height: 10px;*/
+}
