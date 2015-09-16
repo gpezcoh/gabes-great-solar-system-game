@@ -21,6 +21,7 @@ function createPlayer()
     playerDiv.className = "player";
     var startingGalaxy = randomStartingPoint(player,playerDiv);
     player.currentGalaxy = startingGalaxy;
+    player.visibleGalaxies.push(player.currentGalaxy);
     player.size = 5;
     leftOffset = player.size/5;
     topOffset = player.size/2;

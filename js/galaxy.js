@@ -22,7 +22,7 @@ function setVisibleGalaxies()
   {
     for(var i = 0; i < player.currentGalaxy.neighbors.length; ++i)
     {
-      if(player.currentGalaxy.neighbors.indexOf(player.currentGalaxy.neighbors[i]) !== -1)
+      if(player.visibleGalaxies.indexOf(player.currentGalaxy.neighbors[i]) === -1)
       {
         player.visibleGalaxies.push(player.currentGalaxy.neighbors[i]);
       }

@@ -16,6 +16,9 @@ var healthBarInside;
 var healthBarText;
 var nIntervId;
 var galaxyView = 0;
+var planetBoxList = [];
+var planetBoxTextList = [];
+var planetBoxIconList = [];
 
 $(document).ready(function(){
 	  	console.log('hello');

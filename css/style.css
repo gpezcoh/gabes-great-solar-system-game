@@ -126,15 +126,43 @@ body{
 	opacity: 0;
 	overflow: hidden;
 	color: white;
-	font-size: 10px;
+	font-size: 1px;
 }
 
-.planetLabel{
+/*.planetLabel{
 	position: relative;
 	color: white;
 	font-size: 1px;
 	background-color: transparent;
 	opacity: 0;
-	/*width: 10px;
-	height: 10px;*/
+	overflow: hidden;
+	width: 10px;
+	height: 10px;
+}
+*/
+.planetBox{
+	z-index: 2;
+	position: fixed;
+	width: 100px;
+	height: 100px;
+	border: solid 2px white;
+	opacity: 0;
+}
+
+.planetBoxText{
+	z-index: 2;
+	position: fixed;
+	color: white;
+	width: 100px;
+	text-align: center;
+	font-size: 12px;
+	opacity: 0;
+	font-weight: normal;
+}
+
+.planetBoxIcon{
+	z-index: 2;
+	position: fixed;
+	opacity: 0;
+	border-radius: 50%;
 }

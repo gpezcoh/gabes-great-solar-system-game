@@ -10,13 +10,13 @@ function keyPresses(event)
   	{
     	zoomOut(100, 2000);
     	zoomedIn = 0;
- 	}
- 	else if (zoomedIn === 0)
- 	{
- 		zoomIn(300,player.currentGalaxy, 2000);
-    	zoomedIn = 1;
- 	}
- 	window.setTimeout(resetEventListener,2000);
+ 	  }
+ 	  else if (zoomedIn === 0)
+ 	  {
+ 		   zoomIn(300,player.currentGalaxy, 2000);
+    	 zoomedIn = 1;
+ 	  }
+ 	  window.setTimeout(resetEventListener,2000);
   }
   else if(event.keyCode === 65)
   {

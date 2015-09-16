@@ -17,14 +17,6 @@ function allowMovement()
 		if (tempEdge.length <= player.fuel)
 		{
 		    $(this).addClass("visited");
-			// for (var i = 0; i < player.currentGalaxy.edges.length; ++i)
-			// {
-			// 	if(tempGalaxy.edges.indexOf(player.currentGalaxy.edges[i]))
-			// 	{
-			// 		tempEdge = player.currentGalaxy.edges[i];
-			// 		break;
-			// 	}
-			// }
 			$('#' + tempEdge.correspondingDiv.id).animate({opacity: 0.5},2000);
 			tempEdge.correspondingDiv.textContent = "" + Math.round(tempEdge.length);
 			changeFuel(Math.round((tempEdge.length) * -1));
@@ -39,7 +31,6 @@ function allowMovement()
 			},2000);
 			// movePlayer(this)
 			moveCameraAround(tempGalaxy,2000);
-			
 			setVisibleGalaxies();
 		}
 		else
@@ -52,10 +43,6 @@ function allowMovement()
 	// 	alert("Nope");
 	// }
 	});
-
-	$(".planet").click(function () {
-		alert("hello");
-	});
 }
 
 
@@ -67,6 +54,8 @@ function allowMovement()
  	}
  	galaxyView = 1;
  	adjustForZoom();
+ 	addPlanetBoxes();
+ 	$("#interface").css({pointerEvents : "auto"});
  	zoomIn(1000,player.currentGalaxy,2000);
  }
 
@@ -75,8 +64,9 @@ function allowMovement()
  	$("#" + playerDiv.id).animate({borderBottomWidth: "1.25px", borderLeftWidth: "0.25px", borderRightWidth: "0.25px", left: player.currentGalaxy.xPos + player.currentGalaxy.size/4 + "px", top: player.currentGalaxy.yPos - player.currentGalaxy.size/2 +  "px"},2000);
  	for (var i = 0; i < player.currentGalaxy.neighbors.length; ++i)
  	{
- 		$("#galaxy-" + player.currentGalaxy.neighbors[i].galaxyId).animate({opacity: 0},500);
+ 		$("#galaxy-" + player.currentGalaxy.neighbors[i].galaxyId).animate({opacity : 0},500);
  	}
+ 	// $(".galaxy").animate({opacity: 0},500);
  	$(".edge").animate({opacity: 0},500);
  	player.currentGalaxy.correspondingDiv.style.backgroundColor = player.currentGalaxy.realColor;
  	$(".planet").animate({opacity: 1},1000);
@@ -88,6 +78,10 @@ function allowMovement()
  {
  	galaxyView = 0;
  	adjustBackForZoom();
+ 	$(".planetBox").animate({opacity: 0},1000);
+ 	$(".planetBoxText").animate({opacity: 0},1000);
+ 	$(".planetBoxIcon").animate({opacity: 0},1000);
+ 	$("#interface").css({pointerEvents : "none"});
  	zoomIn(300,player.currentGalaxy,2000);
  }
 
