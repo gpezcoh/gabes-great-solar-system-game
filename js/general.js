@@ -19,6 +19,7 @@ var galaxyView = 0;
 var planetBoxList = [];
 var planetBoxTextList = [];
 var planetBoxIconList = [];
+var inventory;
 
 $(document).ready(function(){
 	  	console.log('hello');

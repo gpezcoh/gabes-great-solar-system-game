@@ -47,6 +47,10 @@ function keyPresses(event)
     }
     // window.setTimeout(resetEventListener,2000);
   }
+  else if(event.keyCode === 73)
+  {
+    toggleInventory();
+  }
 }
 
 function resetEventListener()

@@ -14,6 +14,7 @@ function Planet(size, orbit)
 	// this.label;
 	this.planetBox;
 	this.planetBoxText;
+	this.canMove = true;
 }
 
 function createPlanets(currentGalaxy)
@@ -32,7 +33,7 @@ function createPlanets(currentGalaxy)
 		tempPlanet.movementDirection = (Math.random() < 0.5) ? 1 : -1;
 		currentGalaxy.planetList.push(tempPlanet);
 		var tempPlanetDiv = document.createElement('div');
-		tempPlanetDiv.id = "planet-" + currentGalaxy.galaxyId + "-" + i;
+		tempPlanetDiv.id = "planet-" + currentGalaxy.galaxyId + "+" + i;
 		tempPlanetDiv.className = "planet";
 		tempPlanet.correspondingDiv = tempPlanetDiv;
 		createVisiblePlanets(tempPlanet,tempPlanetDiv);
@@ -79,15 +80,18 @@ function randomPlanetStart(planet,planetDiv)
  	var xMove;
  	for(var i = 0; i < galaxy.planetList.length; ++i)
  	{
- 		xMove = galaxy.size/2 - galaxy.planetList[i].size/2 + (galaxy.planetList[i].orbit * Math.cos(galaxy.planetList[i].movementCounter));
- 		yMove = galaxy.size/2 - galaxy.planetList[i].size/2 - galaxy.planetList[i].planetOverlap + (galaxy.planetList[i].orbit * Math.sin(galaxy.planetList[i].movementCounter));
- 		galaxy.planetList[i].yPos = yMove;
- 		galaxy.planetList[i].correspondingDiv.style.top = galaxy.planetList[i].yPos + "px";
- 		galaxy.planetList[i].xPos = xMove;
- 		galaxy.planetList[i].correspondingDiv.style.left = galaxy.planetList[i].xPos + "px";
- 		// galaxy.planetList[i].label.style.top = yMove + "px";
- 		// galaxy.planetList[i].label.style.left = xMove + "px";
- 		galaxy.planetList[i].movementCounter += galaxy.planetList[i].movementDirection * galaxy.planetList[i].speed;
+ 		if(galaxy.planetList[i].canMove)
+ 		{
+	 		xMove = galaxy.size/2 - galaxy.planetList[i].size/2 + (galaxy.planetList[i].orbit * Math.cos(galaxy.planetList[i].movementCounter));
+	 		yMove = galaxy.size/2 - galaxy.planetList[i].size/2 - galaxy.planetList[i].planetOverlap + (galaxy.planetList[i].orbit * Math.sin(galaxy.planetList[i].movementCounter));
+	 		galaxy.planetList[i].yPos = yMove;
+	 		galaxy.planetList[i].correspondingDiv.style.top = galaxy.planetList[i].yPos + "px";
+	 		galaxy.planetList[i].xPos = xMove;
+	 		galaxy.planetList[i].correspondingDiv.style.left = galaxy.planetList[i].xPos + "px";
+	 		// galaxy.planetList[i].label.style.top = yMove + "px";
+	 		// galaxy.planetList[i].label.style.left = xMove + "px";
+	 		galaxy.planetList[i].movementCounter += galaxy.planetList[i].movementDirection * galaxy.planetList[i].speed;
+ 		}
  	}
  }
 
@@ -129,6 +133,7 @@ function planetClick()
 	$(".planetBoxIcon").click(function () {
 		goToPlanet(this);
 	});
+
 	$(".planetBox").hover(function () {
 		highlightBox(this,5);
 	},function () {
@@ -153,7 +158,22 @@ function goToPlanet(div)
 {
 	if(div.style.opacity != 0)
 	{
-
+		var tempId = div.id.split("-").pop();
+		var tempPlanet = player.currentGalaxy.planetList[tempId];
+		tempPlanet.canMove = false;
+		$("#player").animate({
+			top: (player.currentGalaxy.yPos + (player.currentGalaxy.size/2 - tempPlanet.size/2 + (tempPlanet.orbit * Math.sin(tempPlanet.movementCounter)))) + 'px',
+			left: (player.currentGalaxy.xPos + tempPlanet.xPos + tempPlanet.size/2) + 'px',
+		},2000);
+		if(player.previousPlanet === 0)
+		{
+			player.previousPlanet = tempPlanet;
+		}
+		else
+		{
+			player.previousPlanet.canMove = true;
+			player.previousPlanet = tempPlanet;
+		}
 	}
 }
 

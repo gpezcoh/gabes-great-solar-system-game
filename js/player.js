@@ -1,4 +1,3 @@
-
 function Player()
 {
     this.currentGalaxy = 0;
@@ -11,6 +10,7 @@ function Player()
     this.maxHealth = 100;
     this.maxDistance = 100;
     this.visibleEdges = [];
+    this.previousPlanet = 0;
 }
 
 function createPlayer()

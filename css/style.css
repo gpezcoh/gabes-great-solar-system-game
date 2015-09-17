@@ -166,3 +166,30 @@ body{
 	opacity: 0;
 	border-radius: 50%;
 }
+
+.inventoryPiece{
+	z-index: 2;
+	position: fixed;
+	width: 100px;
+	height: 100px;
+	border: solid 2px white;
+	opacity: 1;
+}
+
+#inventory{
+	z-index: 2;
+	position: fixed;
+}
+
+#inventory td{
+	position: relative;
+	width: 100px;
+	height: 100px;
+}
+
+.mineral{
+	position: relative;
+	z-index: 2;
+	width: 100px;
+	height: 100px;
+}
