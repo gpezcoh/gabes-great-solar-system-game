@@ -10,7 +10,7 @@ function Player()
     this.maxHealth = 100;
     this.maxDistance = 100;
     this.visibleEdges = [];
-    this.previousPlanet = 0;
+    this.currentPlanet = 0;
 }
 
 function createPlayer()

@@ -160,19 +160,22 @@ function goToPlanet(div)
 	{
 		var tempId = div.id.split("-").pop();
 		var tempPlanet = player.currentGalaxy.planetList[tempId];
-		tempPlanet.canMove = false;
-		$("#player").animate({
-			top: (player.currentGalaxy.yPos + (player.currentGalaxy.size/2 - tempPlanet.size/2 + (tempPlanet.orbit * Math.sin(tempPlanet.movementCounter)))) + 'px',
-			left: (player.currentGalaxy.xPos + tempPlanet.xPos + tempPlanet.size/2) + 'px',
-		},2000);
-		if(player.previousPlanet === 0)
+		if (tempPlanet !== player.currentPlanet)
 		{
-			player.previousPlanet = tempPlanet;
-		}
-		else
-		{
-			player.previousPlanet.canMove = true;
-			player.previousPlanet = tempPlanet;
+			tempPlanet.canMove = false;
+			$("#player").animate({
+				top: (player.currentGalaxy.yPos + (player.currentGalaxy.size/2 - tempPlanet.size/2 + (tempPlanet.orbit * Math.sin(tempPlanet.movementCounter)))) + 'px',
+				left: (player.currentGalaxy.xPos + tempPlanet.xPos + tempPlanet.size/2) + 'px',
+			},2000);
+			if(player.currentPlanet === 0)
+			{
+				player.currentPlanet = tempPlanet;
+			}
+			else
+			{
+				player.currentPlanet.canMove = true;
+				player.currentPlanet = tempPlanet;
+			}
 		}
 	}
 }
