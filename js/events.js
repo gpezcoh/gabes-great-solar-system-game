@@ -51,7 +51,7 @@ function keyPresses(event)
   {
     toggleInventory();
   }
-  else if(event.keyCode === 68 && player.onAPlanet)
+  else if(event.keyCode === 77 && player.onAPlanet)
   {
     document.removeEventListener('keydown', keyPresses);
     mine(player.currentPlanet);
