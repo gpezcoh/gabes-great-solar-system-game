@@ -4,6 +4,7 @@
  	createFuelBar();
  	createPlanetBoxes();
  	createInventory(4,4);
+ 	createLoadBar();
  }
 
  function createHealthBar()
@@ -82,16 +83,39 @@
         tr.style.top = r*100 + "px";
         for (var c=0;c<cols;++c){
             var cell = tr.appendChild(document.createElement('td'));
-            cell.id = ++i;
+            cell.id = "inventorySpot-" + ++i;
             cell.className = "inventoryPiece";
-            var mineral = cell.appendChild(document.createElement('img'));
-            mineral.className = "mineral";
-            mineral.src = "minerals/drawing.svg";
         }
     }
     interface.appendChild(inventory);
-    return inventory;
 } 
+
+function createLoadBar()
+{
+	loadBar  = document.createElement('div');
+    loadBar.id = "loadBar";
+    loadBar.className = "loadBar";
+    loadBar.style.top = getDocHeight() - 100 + "px";
+    loadBar.style.left = document.body.clientWidth/2 - 200 + "px";
+    interface.appendChild(loadBar);
+    loadBarInside  = document.createElement('div');
+    loadBarInside.id = "loadBarInside";
+    loadBarInside.className = "loadBarInside";
+    loadBar.appendChild(loadBarInside);
+    loadBarText = document.createElement('div');
+    loadBarText.id = "loadBarText";
+    loadBarText.className = "loadBarText";
+    loadBarText.style.top = getDocHeight() - 120 + "px";
+    loadBarText.style.left = document.body.clientWidth/2 - 200 + "px";
+    loadBarText.textContent = "Mining for Elements!";
+    interface.appendChild(loadBarText);
+    loadBarResults = document.createElement('div');
+    loadBarResults.id = "loadBarResults";
+    loadBarResults.className = "loadBarResults";
+    loadBarResults.style.top = getDocHeight() - 120 + "px";
+    loadBarResults.style.left = document.body.clientWidth/2 + 50 + "px";
+    interface.appendChild(loadBarResults);
+}
 
  function changeHealth(amount)
 {
@@ -186,7 +210,6 @@ function addPlanetBoxes()
 
 function toggleInventory()
 {
-	console.log("hello")
 	if(inventory.style.display === "none")
 	{
 		inventory.style.display = "inline";

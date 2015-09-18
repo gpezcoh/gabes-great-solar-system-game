@@ -114,6 +114,41 @@ body{
 	color: white;
 }
 
+#loadBar{
+	z-index: 2;
+	position: fixed;
+/*	right: 0;
+	top: 42px;*/
+	width: 404px;
+	height: 24px;
+	background-color: #A9E2F3;
+	border: solid 2px white;
+	display: none;
+}
+
+#loadBarInside{
+	z-index: 2;
+	width: 0px;
+	height: 20px;
+	background-color: #01A9DB;
+}
+
+#loadBarText{
+	position: fixed;
+/*	right: 120px;
+	top: 56px;*/
+	color: white;
+	display: none;
+}
+
+#loadBarResults{
+	position: fixed;
+/*	right: 120px;
+	top: 56px;*/
+	color: white;
+	display: none;
+}
+
 .edgeText{
 	position: absolute;
 	color: white;
@@ -187,7 +222,7 @@ body{
 	height: 100px;
 }
 
-.mineral{
+.element{
 	position: relative;
 	z-index: 2;
 	width: 100px;

@@ -83,6 +83,9 @@ function allowMovement()
  	$(".planetBoxIcon").animate({opacity: 0},1000);
  	$("#interface").css({pointerEvents : "none"});
  	zoomIn(300,player.currentGalaxy,2000);
+ 	player.onAPlanet = false;
+ 	player.currentPlanet.canMove = true;
+ 	player.currentPlanet = 0;
  }
 
 function adjustBackForZoom()

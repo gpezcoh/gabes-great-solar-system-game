@@ -15,6 +15,7 @@ function Planet(size, orbit)
 	this.planetBox;
 	this.planetBoxText;
 	this.canMove = true;
+	this.allowsMining = true;
 }
 
 function createPlanets(currentGalaxy)
@@ -133,7 +134,6 @@ function planetClick()
 	$(".planetBoxIcon").click(function () {
 		goToPlanet(this);
 	});
-
 	$(".planetBox").hover(function () {
 		highlightBox(this,5);
 	},function () {
@@ -177,6 +177,7 @@ function goToPlanet(div)
 				player.currentPlanet = tempPlanet;
 			}
 		}
+		player.onAPlanet = true;
 	}
 }
 

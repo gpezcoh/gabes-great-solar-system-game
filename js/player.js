@@ -11,6 +11,10 @@ function Player()
     this.maxDistance = 100;
     this.visibleEdges = [];
     this.currentPlanet = 0;
+    this.inventorySpaces = 16;
+    this.firstOpenSpace = 1;
+    this.elementList = [];
+    this.onAPlanet = false;
 }
 
 function createPlayer()
