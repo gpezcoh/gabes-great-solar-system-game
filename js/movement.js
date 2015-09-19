@@ -38,10 +38,10 @@ function allowMovement()
 			alert("Not Enough Fuel");
 		}
 	}
-	// else
-	// {
-	// 	alert("Nope");
-	// }
+	else
+	{
+		alert("Too far away");
+	}
 	});
 }
 

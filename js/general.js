@@ -72,6 +72,20 @@ function getTempNum(maxLimit, minLimit)
 	return tempSize;
 }
 
+function getTempWholeNum(maxLimit, minLimit)
+{
+  var tempSize = Math.round(Math.random() * maxLimit);
+  if (tempSize < minLimit)
+  {
+    tempSize = minLimit;
+  }
+  if (tempSize > maxLimit)
+  {
+    tempSize = maxLimit;
+  }
+  return tempSize;
+}
+
 function getTempPos(type)
 {
 	var randPos = 0;
