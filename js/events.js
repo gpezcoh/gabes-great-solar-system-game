@@ -26,10 +26,10 @@ function keyPresses(event)
   {
   	setHealth(100);
   }
-  else if(event.keyCode === 81)
-  {
-  	changeFuel(-10);
-  }
+  // else if(event.keyCode === 81)
+  // {
+  // 	changeFuel(-10);
+  // }
   else if(event.keyCode === 87)
   {
   	setFuel(1000);
