@@ -15,6 +15,7 @@ function Player()
     this.firstOpenSpace = 1;
     this.elementList = [];
     this.onAPlanet = false;
+    this.equipment = [];
 }
 
 function createPlayer()
