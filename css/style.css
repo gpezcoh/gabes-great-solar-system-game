@@ -259,6 +259,17 @@ body{
 	color: white;
 }
 
+#equipmentPointer{
+	position: fixed;
+	z-index: 2;
+	width: 200px;
+	height: 25px;
+	text-align: center;
+	color: white;
+	border: solid 2px white;
+	display: none;
+}
+
 /*.elementAmount{
 	position: relative;
 	z-index: 2;

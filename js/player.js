@@ -46,6 +46,12 @@ function createPlayer()
     $("#universe").animate({zoom: zoom + '%' , left: xMove + 'px', top: yMove + 'px'}, 2000);
     zoomedIn = 1;
     setVisibleGalaxies();
+    player.equipment.push(playerHull);
+    player.equipment.push(playerEngine);
+    player.equipment.push(playerDrill);
+    player.equipment.push(playerFuelTank);
+    player.equipment.push(playerLanguageTranslator);
+    player.equipment.push(playerCargoBay);
 }
 
 function setPlayerCoordinates(startingGalaxy, direction)

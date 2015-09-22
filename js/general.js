@@ -21,6 +21,7 @@ var planetBoxTextList = [];
 var planetBoxIconList = [];
 var inventory;
 var shipEquipment;
+var equipmentPointer;
 
 $(document).ready(function(){
       console.log('hello');

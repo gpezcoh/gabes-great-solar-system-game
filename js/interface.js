@@ -110,6 +110,13 @@
         cell.className = "shipEquipmentPiece";
     }
     interface.appendChild(shipEquipment);
+    equipmentPointer = document.createElement('div');
+    equipmentPointer.id = "equipmentPointer";
+    equipmentPointer.className = 'equipmentPointer';
+    equipmentPointer.style.left = "120px";
+    equipmentPointer.style.top = "0px";
+    interface.appendChild(equipmentPointer);
+    equipmentClick();
 } 
 
 function createLoadBar()
@@ -237,6 +244,7 @@ function toggleInventory()
         shipEquipment.style.display = "inline";
         inventory.style.display = "inline";
         universe.style.display = "none";
+        // equipmentPointer.style.display = "inline";
         $(".planetBox").css({display: "none"});
         $(".planetBoxText").css({display: "none"});
         $(".planetBoxIcon").css({display: "none"});
@@ -250,6 +258,7 @@ function toggleInventory()
         shipEquipment.style.display = "none";
         inventory.style.display = "none";
         universe.style.display = "inline";
+        // equipmentPointer.style.display = "none";
         $(".planetBox").css({display: "inline"});
         $(".planetBoxText").css({display: "inline"});
         $(".planetBoxIcon").css({display: "inline"});
