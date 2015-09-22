@@ -218,9 +218,30 @@ body{
 
 #inventory td{
 	position: relative;
-	width: 120px;
+	width: 100px;
 	height: 100px;
 }
+
+.shipEquipmentPiece{
+	z-index: 2;
+	position: fixed;
+	width: 100px;
+	height: 100px;
+	border: solid 2px white;
+	opacity: 1;
+}
+
+#shipEquipment{
+	z-index: 2;
+	position: fixed;
+}
+
+#shipEquipment td{
+	position: relative;
+	width: 100px;
+	height: 100px;
+}
+
 
 .element{
 	position: relative;

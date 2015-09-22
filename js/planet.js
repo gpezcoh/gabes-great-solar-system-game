@@ -201,3 +201,41 @@ function highlightBox(div,amount)
 		}
 }
 
+function findPlanetToGoTo(keyCode)
+{
+	var correspondingPlanet;
+	switch(keyCode){
+		case 49:
+			correspondingPlanet = document.getElementById("planetBox-0");
+			break;
+		case 50:
+			correspondingPlanet = document.getElementById("planetBox-1");
+			break;
+		case 51:
+			correspondingPlanet = document.getElementById("planetBox-2");
+			break;
+		case 52:
+			correspondingPlanet = document.getElementById("planetBox-3");
+			break;
+		case 53:
+			correspondingPlanet = document.getElementById("planetBox-4");
+			break;
+		case 54:
+			correspondingPlanet = document.getElementById("planetBox-5");
+			break;	
+		case 55:
+			correspondingPlanet = document.getElementById("planetBox-6");
+			break;		
+		case 56:
+			correspondingPlanet = document.getElementById("planetBox-7");
+			break;		
+		case 57:
+			correspondingPlanet = document.getElementById("planetBox-8");
+			break;	
+		case 48:
+			correspondingPlanet = document.getElementById("planetBox-9");
+			break;	
+		}
+
+		goToPlanet(correspondingPlanet);
+	}

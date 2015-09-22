@@ -1,15 +1,16 @@
  function createInterface()
  {
- 	createHealthBar();
- 	createFuelBar();
- 	createPlanetBoxes();
- 	createInventory(4,4);
- 	createLoadBar();
+    createHealthBar();
+    createFuelBar();
+    createPlanetBoxes();
+    createInventory(4,4);
+    createShipEquipment(6);
+    createLoadBar();
  }
 
  function createHealthBar()
  {
- 	healthBar  = document.createElement('div');
+    healthBar  = document.createElement('div');
     healthBar.id = "healthBar";
     healthBar.className = "healthBar";
     interface.appendChild(healthBar);
@@ -26,7 +27,7 @@
 
   function createFuelBar()
  {
- 	fuelBar  = document.createElement('div');
+    fuelBar  = document.createElement('div');
     fuelBar.id = "fuelBar";
     fuelBar.className = "fuelBar";
     interface.appendChild(fuelBar);
@@ -43,28 +44,28 @@
 
  function createPlanetBoxes()
  {
- 	for (var i = 0; i < 10; ++i)
- 	{
- 		var planetBox  = document.createElement('div');
-	    planetBox.id = "planetBox-" + i;
-	    planetBox.className = "planetBox";
-	    planetBox.style.left = 98*i + "px";
-	    interface.appendChild(planetBox);
-	    planetBoxList.push(planetBox);
- 		var planetBoxText  = document.createElement('div');
-	    planetBoxText.id = "planetBoxText-" + i;
-	    planetBoxText.className = "planetBoxText";
-	    planetBoxText.style.left = 98*i + "px";
-	    planetBoxText.style.top = "70px";
-	    interface.appendChild(planetBoxText);
-	    planetBoxTextList.push(planetBoxText);
- 		var planetBoxIcon  = document.createElement('div');
-	    planetBoxIcon.id = "planetBoxIcon-" + i;
-	    planetBoxIcon.className = "planetBoxIcon";
-	    interface.appendChild(planetBoxIcon);
-	    planetBoxIconList.push(planetBoxIcon);
- 	}
- 	planetClick();
+    for (var i = 0; i < 10; ++i)
+    {
+        var planetBox  = document.createElement('div');
+        planetBox.id = "planetBox-" + i;
+        planetBox.className = "planetBox";
+        planetBox.style.left = 98*i + "px";
+        interface.appendChild(planetBox);
+        planetBoxList.push(planetBox);
+        var planetBoxText  = document.createElement('div');
+        planetBoxText.id = "planetBoxText-" + i;
+        planetBoxText.className = "planetBoxText";
+        planetBoxText.style.left = 98*i + "px";
+        planetBoxText.style.top = "70px";
+        interface.appendChild(planetBoxText);
+        planetBoxTextList.push(planetBoxText);
+        var planetBoxIcon  = document.createElement('div');
+        planetBoxIcon.id = "planetBoxIcon-" + i;
+        planetBoxIcon.className = "planetBoxIcon";
+        interface.appendChild(planetBoxIcon);
+        planetBoxIconList.push(planetBoxIcon);
+    }
+    planetClick();
  }
 
  function createInventory(rows,cols)
@@ -90,9 +91,30 @@
     interface.appendChild(inventory);
 } 
 
+ function createShipEquipment(rows)
+ {
+    var i=0;
+    shipEquipment = document.createElement('div');
+    shipEquipment.id = "shipEquipment";
+    shipEquipment.className = 'shipEquipment';
+    shipEquipment.style.width = "100px";
+    shipEquipment.style.height = rows*100 + "px";
+    shipEquipment.style.left = "0px";
+    shipEquipment.style.top = "50px";
+    shipEquipment.style.display = "none";
+    for (var r=0;r<rows;++r){
+        var tr = shipEquipment.appendChild(document.createElement('tr'));
+        tr.style.top = r*100 + "px";
+        var cell = tr.appendChild(document.createElement('td'));
+        cell.id = "shipEquipmentSpot-" + ++i;
+        cell.className = "shipEquipmentPiece";
+    }
+    interface.appendChild(shipEquipment);
+} 
+
 function createLoadBar()
 {
-	loadBar  = document.createElement('div');
+    loadBar  = document.createElement('div');
     loadBar.id = "loadBar";
     loadBar.className = "loadBar";
     loadBar.style.top = getDocHeight() - 100 + "px";
@@ -193,47 +215,49 @@ function changeBar(type,amount)
 
 function addPlanetBoxes()
 {
-	for (var i = 0; i < player.currentGalaxy.planetList.length; ++i)
-	{
-		$("#" + planetBoxList[i].id).animate({opacity : 1},2000);
-		$("#" + planetBoxTextList[i].id).animate({opacity : 1},2000);
-		$("#" + planetBoxIconList[i].id).animate({opacity : 1},2000);
-		planetBoxList[i].style.backgroundColor = "black";
-		planetBoxIconList[i].style.width = player.currentGalaxy.planetList[i].size*20 + "px";
-		planetBoxIconList[i].style.height = player.currentGalaxy.planetList[i].size*20 + "px";
-		planetBoxIconList[i].style.backgroundColor = "" + player.currentGalaxy.planetList[i].color;
-		planetBoxIconList[i].style.left = (49 + 98*i - player.currentGalaxy.planetList[i].size*10) + "px";
-		planetBoxIconList[i].style.top = (40 - player.currentGalaxy.planetList[i].size*10) + "px";
-		planetBoxTextList[i].textContent = "Planet " + (i + 1);
-	}
+    for (var i = 0; i < player.currentGalaxy.planetList.length; ++i)
+    {
+        $("#" + planetBoxList[i].id).animate({opacity : 1},2000);
+        $("#" + planetBoxTextList[i].id).animate({opacity : 1},2000);
+        $("#" + planetBoxIconList[i].id).animate({opacity : 1},2000);
+        planetBoxList[i].style.backgroundColor = "black";
+        planetBoxIconList[i].style.width = player.currentGalaxy.planetList[i].size*20 + "px";
+        planetBoxIconList[i].style.height = player.currentGalaxy.planetList[i].size*20 + "px";
+        planetBoxIconList[i].style.backgroundColor = "" + player.currentGalaxy.planetList[i].color;
+        planetBoxIconList[i].style.left = (49 + 98*i - player.currentGalaxy.planetList[i].size*10) + "px";
+        planetBoxIconList[i].style.top = (40 - player.currentGalaxy.planetList[i].size*10) + "px";
+        planetBoxTextList[i].textContent = "Planet " + (i + 1);
+    }
 }
 
 function toggleInventory()
 {
-	if(inventory.style.display === "none")
-	{
-		inventory.style.display = "inline";
-		universe.style.display = "none";
-		$(".planetBox").css({display: "none"});
-	 	$(".planetBoxText").css({display: "none"});
-	 	$(".planetBoxIcon").css({display: "none"});
-	 	if (galaxyView !== 1)
-	 	{
-	 		$("#interface").css({pointerEvents : "auto"});
-	 	}
-	}
-	else
-	{
-		inventory.style.display = "none";
-		universe.style.display = "inline";
-		$(".planetBox").css({display: "inline"});
-	 	$(".planetBoxText").css({display: "inline"});
-	 	$(".planetBoxIcon").css({display: "inline"});
-	 	if (galaxyView !== 1)
-	 	{
-	 		$("#interface").css({pointerEvents : "none"});
-	 	}
-	}
+    if(inventory.style.display === "none")
+    {
+        shipEquipment.style.display = "inline";
+        inventory.style.display = "inline";
+        universe.style.display = "none";
+        $(".planetBox").css({display: "none"});
+        $(".planetBoxText").css({display: "none"});
+        $(".planetBoxIcon").css({display: "none"});
+        if (galaxyView !== 1)
+        {
+            $("#interface").css({pointerEvents : "auto"});
+        }
+    }
+    else
+    {
+        shipEquipment.style.display = "none";
+        inventory.style.display = "none";
+        universe.style.display = "inline";
+        $(".planetBox").css({display: "inline"});
+        $(".planetBoxText").css({display: "inline"});
+        $(".planetBoxIcon").css({display: "inline"});
+        if (galaxyView !== 1)
+        {
+            $("#interface").css({pointerEvents : "none"});
+        }
+    }
 }
 
 

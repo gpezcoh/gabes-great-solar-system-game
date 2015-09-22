@@ -20,9 +20,10 @@ var planetBoxList = [];
 var planetBoxTextList = [];
 var planetBoxIconList = [];
 var inventory;
+var shipEquipment;
 
 $(document).ready(function(){
-	  	console.log('hello');
+      console.log('hello');
       document.addEventListener('keydown', keyPresses);
       createGalaxies(100);
       createPlayer();
@@ -64,12 +65,12 @@ function randomStartingPoint(player,playerDiv)
 
 function getTempNum(maxLimit, minLimit)
 {
-	var tempSize = Math.random() * maxLimit;
-	if (tempSize < minLimit)
-	{
-		tempSize = minLimit;
-	}
-	return tempSize;
+  var tempSize = Math.random() * maxLimit;
+  if (tempSize < minLimit)
+  {
+    tempSize = minLimit;
+  }
+  return tempSize;
 }
 
 function getTempWholeNum(maxLimit, minLimit)
@@ -88,16 +89,16 @@ function getTempWholeNum(maxLimit, minLimit)
 
 function getTempPos(type)
 {
-	var randPos = 0;
-	if (type === 0)
-	{
-		randPos = Math.random() * document.body.clientWidth;
-	}
-	else
-	{
-		randPos = Math.random() * getDocHeight();
-	}
-	return randPos;
+  var randPos = 0;
+  if (type === 0)
+  {
+    randPos = Math.random() * document.body.clientWidth;
+  }
+  else
+  {
+    randPos = Math.random() * getDocHeight();
+  }
+  return randPos;
 }
 
 function getDocHeight() {
