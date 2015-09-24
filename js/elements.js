@@ -19,4 +19,3 @@ function Element(name,rarity,amount,value, depth)
 	this.value = value;
 	this.depth = depth;
 }
-

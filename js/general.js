@@ -5,8 +5,6 @@ var edgeDivList = [];
 var universe = document.getElementById('universe');
 var player;
 var playerDiv;
-var topOffset;
-var leftOffset;
 var zoom;
 var scale;
 var zoomedIn;

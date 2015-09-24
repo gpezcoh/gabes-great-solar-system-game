@@ -61,7 +61,7 @@ function allowMovement()
 3
  function adjustForZoom()
  {
- 	$("#" + playerDiv.id).animate({borderBottomWidth: "1.25px", borderLeftWidth: "0.25px", borderRightWidth: "0.25px", left: (player.currentGalaxy.xPos + player.currentGalaxy.size/2) + "px", top: (player.currentGalaxy.yPos + player.currentGalaxy.size/2) + "px"},2000);
+ 	$("#" + playerDiv.id).animate({width: "2px", height: "2px", left: (player.currentGalaxy.xPos + player.currentGalaxy.size/2) + "px", top: (player.currentGalaxy.yPos + player.currentGalaxy.size/2) + "px"},2000);
  	for (var i = 0; i < player.currentGalaxy.neighbors.length; ++i)
  	{
  		$("#galaxy-" + player.currentGalaxy.neighbors[i].galaxyId).animate({opacity : 0},500);

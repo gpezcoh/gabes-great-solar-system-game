@@ -60,8 +60,8 @@ body{
 
 #player{
 	z-index: 2;
-	position: relative;
-	width: 0;
+	position: absolute;
+	overflow: hidden;
 /*  border-bottom:solid 0px red;
     border-right:solid 1px transparent;
     border-left:solid 1px transparent;*/

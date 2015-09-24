@@ -21,20 +21,21 @@ function Player()
 function createPlayer()
 {
     player = new Player();
-    playerDiv = document.createElement('div');
+    playerDiv = document.createElement('img');
     playerDiv.id = "player";
     playerDiv.className = "player";
+    playerDiv.src = "spaceships/spaceship.svg";
     var startingGalaxy = randomStartingPoint(player,playerDiv);
     player.currentGalaxy = startingGalaxy;
     player.visibleGalaxies.push(player.currentGalaxy);
     player.size = 5;
-    leftOffset = player.size/5;
-    topOffset = player.size/2;
+    playerDiv.style.width = player.size + "px";
+    playerDiv.style.height = player.size + "px";
     playerDiv.style.left = setPlayerCoordinates(startingGalaxy, "left") + "px";
     playerDiv.style.top = setPlayerCoordinates(startingGalaxy, "top") + "px";
-    playerDiv.style.borderBottom = "solid " + player.size + "px red";
-    playerDiv.style.borderLeft = "solid " + player.size/5 + "px transparent";
-    playerDiv.style.borderRight = "solid " + player.size/5 + "px transparent";
+    // playerDiv.style.borderBottom = "solid " + player.size + "px red";
+    // playerDiv.style.borderLeft = "solid " + player.size/5 + "px transparent";
+    // playerDiv.style.borderRight = "solid " + player.size/5 + "px transparent";
     player.divGalaxy = galaxyList[startingGalaxy.galaxyId].correspondingDiv;
     $(player.divGalaxy).addClass("visited");
     universe.appendChild(playerDiv);
@@ -58,11 +59,11 @@ function setPlayerCoordinates(startingGalaxy, direction)
 {
     if (direction === "left")
     {
-      return startingGalaxy.xPos + startingGalaxy.size/2 - leftOffset;
+      return startingGalaxy.xPos - player.size/2 + startingGalaxy.size/2;
     }
     else if (direction === "top")
     {
-      return startingGalaxy.yPos + startingGalaxy.size/2 - topOffset;
+      return startingGalaxy.yPos - player.size/2 + startingGalaxy.size/2;
     }
 }
 
