@@ -31,12 +31,9 @@ function resetLoadBar(type)
 
 function minePlanet(planet, index,resultText)
 {
-	var testMining = Math.random();
 	$("#loadBarInside").animate({width: "+=40px"},1000);
-	var tempNum = getTempWholeNum(10,1) - 1;
-	var testElement = elementList[tempNum];
-	console.log(tempNum)
-	if(testMining < 0.5)
+	var testElement = hitOrMiss(planet);
+	if(testElement != "none")
 	{
 		if(player.firstOpenSpace <= player.inventorySpaces)
 		{
@@ -61,6 +58,11 @@ function minePlanet(planet, index,resultText)
 		$("#loadBarInside").animate({width: "0px"},10);
 		window.setTimeout(function(){resetLoadBar("end")},1000);
 	}
+}
+
+function hitOrMiss()
+{
+	return "none";
 }
 
 function foundSomething(element,resultText)

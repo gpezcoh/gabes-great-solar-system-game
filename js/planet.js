@@ -16,6 +16,7 @@ function Planet(size, orbit)
 	this.planetBoxText;
 	this.canMove = true;
 	this.allowsMining = true;
+	this.elementList = [];
 }
 
 function createPlanets(currentGalaxy)
@@ -31,6 +32,7 @@ function createPlanets(currentGalaxy)
 		tempPlanet.movementCounter = Math.round(getTempNum(100,1)) * 0.05;
 		tempPlanet.speed = getTempNum(0.05,0.01);
 		tempPlanet.color = getPlanetColor();
+		getPlanetElements(tempPlanet);
 		tempPlanet.movementDirection = (Math.random() < 0.5) ? 1 : -1;
 		currentGalaxy.planetList.push(tempPlanet);
 		var tempPlanetDiv = document.createElement('div');
@@ -123,6 +125,19 @@ function randomPlanetStart(planet,planetDiv)
 	}
 }
 
+function getPlanetElements(planet)
+{
+	var randChance;
+	for(var i = 0; i < elementList.length;++i)
+	{
+		randChance = Math.random() * (elementList.length + 1);
+		if(randChance > elementList[i].planetaryRarity)
+		{
+			planet.elementList.push(elementList[i]);
+		} 
+	}
+}
+
 function planetClick()
 {
 	$(".planetBox").click(function () {
@@ -176,6 +191,7 @@ function goToPlanet(div)
 				player.currentPlanet.canMove = true;
 				player.currentPlanet = tempPlanet;
 			}
+			console.log(player.currentPlanet.elementList)
 		}
 		player.onAPlanet = true;
 	}

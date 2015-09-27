@@ -11,10 +11,10 @@ var Zeblite = new Element("Zeblite",10,0,100,550);
 var elementList = [Scoydian,Estuysium,Dascite,Druenium,Zaprite,Ethaucium,
 Ashaonium,Truanyx,Iuprietine,Zeblite];
 
-function Element(name,rarity,amount,value, depth)
+function Element(name,planetaryRarity,amount,value,depth)
 {
 	this.name = name;
-	this.rarity = rarity;
+	this.planetaryRarity = planetaryRarity;
 	this.amount = amount;
 	this.value = value;
 	this.depth = depth;
