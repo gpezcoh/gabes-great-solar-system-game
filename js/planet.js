@@ -17,6 +17,8 @@ function Planet(size, orbit)
 	this.canMove = true;
 	this.allowsMining = true;
 	this.elementList = [];
+	this.specificRarity = [];
+	this.totalRarity = 0;
 }
 
 function createPlanets(currentGalaxy)
@@ -136,6 +138,24 @@ function getPlanetElements(planet)
 			planet.elementList.push(elementList[i]);
 		} 
 	}
+	for(var i = 0; i < planet.elementList.length; ++i)
+	{
+		randChance = Math.random()/planet.elementList[i].planetaryRarity;
+		planet.specificRarity.push(randChance);
+		planet.totalRarity += randChance;
+	}
+	
+	console.log(planet.elementList);
+	console.log(planet.specificRarity);
+	if(planet.totalRarity > 0.5)
+	{
+		planet.totalRarity = planet.totalRarity * 0.25;
+		if(planet.totalRarity > 0.5)
+		{
+			planet.totalRarity = 0.5;
+		}
+	} 
+	console.log(planet.totalRarity);
 }
 
 function planetClick()
@@ -191,7 +211,6 @@ function goToPlanet(div)
 				player.currentPlanet.canMove = true;
 				player.currentPlanet = tempPlanet;
 			}
-			console.log(player.currentPlanet.elementList)
 		}
 		player.onAPlanet = true;
 	}

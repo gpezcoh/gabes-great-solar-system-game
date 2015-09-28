@@ -60,9 +60,42 @@ function minePlanet(planet, index,resultText)
 	}
 }
 
-function hitOrMiss()
+function hitOrMiss(planet)
 {
-	return "none";
+	var randChance = Math.random();
+	console.log(randChance);
+	console.log("check " + planet.totalRarity);
+	if(randChance < planet.totalRarity)
+	{
+		var element = "none";
+		var index;
+		for(var i = 0; i < planet.elementList.length; ++i)
+		{
+			if (randChance < planet.specificRarity[i] && element === "none")
+			{
+				element = planet.elementList[i];
+				index = i;
+			}
+			else if (randChance < planet.specificRarity[i]) 
+			{
+				if(planet.specificRarity[i] < planet.specificRarity[index])
+				{
+					element = planet.elementList[i];
+					index = i;
+				}
+			}
+		}
+		if(element === "none")
+		{
+			element = planet.elementList[0];
+		}
+		console.log(element);
+		return element;
+	}
+	else
+	{
+		return "none";
+	}
 }
 
 function foundSomething(element,resultText)

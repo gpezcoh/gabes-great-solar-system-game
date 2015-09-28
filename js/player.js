@@ -53,6 +53,10 @@ function createPlayer()
     player.equipment.push(playerFuelTank);
     player.equipment.push(playerLanguageTranslator);
     player.equipment.push(playerCargoBay);
+    player.maxHealth = player.equipment[0].health;
+    player.health = player.equipment[0].health;
+    player.maxFuel = player.equipment[3].capacity;
+    player.fuel = player.equipment[3].capacity;
 }
 
 function setPlayerCoordinates(startingGalaxy, direction)
