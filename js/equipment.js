@@ -69,3 +69,55 @@ function highlightEquipmentBox(div,amount)
 			}
 		}
 }
+
+function addEquipment()
+{
+	var firstBox = document.getElementById("shipEquipmentSpot-1")
+    var hullBox = document.createElement('img');
+    hullBox.id = "hullBox";
+    hullBox.src = "spaceships/spaceship.svg";
+    hullBox.className = 'hullBox';
+    hullBox.style.width = "90px";
+    hullBox.style.height = "90px";
+    firstBox.appendChild(hullBox);
+    var secondBox = document.getElementById("shipEquipmentSpot-2")
+    var engineBox = document.createElement('img');
+    engineBox.id = "engineBox";
+    engineBox.src = "equipment/cheap engine.svg";
+    engineBox.className = 'engineBox';
+    engineBox.style.width = "90px";
+    engineBox.style.height = "90px";
+    secondBox.appendChild(engineBox);
+    var thirdBox = document.getElementById("shipEquipmentSpot-3")
+    var drillBox = document.createElement('img');
+    drillBox.id = "drillBox";
+    drillBox.src = "equipment/cheap drill.svg";
+    drillBox.className = 'drillBox';
+    drillBox.style.width = "90px";
+    drillBox.style.height = "90px";
+    thirdBox.appendChild(drillBox);
+    var fourthBox = document.getElementById("shipEquipmentSpot-4")
+    var fuelTankBox = document.createElement('img');
+    fuelTankBox.id = "fuelTankBox";
+    fuelTankBox.src = "equipment/small fuel tank.svg";
+    fuelTankBox.className = 'fuelTankBox';
+    fuelTankBox.style.width = "90px";
+    fuelTankBox.style.height = "90px";
+    fourthBox.appendChild(fuelTankBox);
+    var fifthBox = document.getElementById("shipEquipmentSpot-5")
+    var translatorBox = document.createElement('img');
+    translatorBox.id = "translatorBox";
+    translatorBox.src = "equipment/cheap translator.svg";
+    translatorBox.className = 'translatorBox';
+    translatorBox.style.width = "90px";
+    translatorBox.style.height = "90px";
+    fifthBox.appendChild(translatorBox);
+    var sixthBox = document.getElementById("shipEquipmentSpot-6")
+    var cargoBayBox = document.createElement('img');
+    cargoBayBox.id = "cargoBayBox";
+    cargoBayBox.src = "equipment/small cargo bay.svg";
+    cargoBayBox.className = 'cargoBayBox';
+    cargoBayBox.style.width = "90px";
+    cargoBayBox.style.height = "90px";
+    sixthBox.appendChild(cargoBayBox);
+}

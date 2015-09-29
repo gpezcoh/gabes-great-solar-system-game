@@ -117,14 +117,7 @@
     equipmentPointer.style.top = "0px";
     interface.appendChild(equipmentPointer);
     equipmentClick();
-    var firstBox = document.getElementById("shipEquipmentSpot-1")
-    var hullBox = document.createElement('img');
-    hullBox.id = "hullBox";
-    hullBox.src = "spaceships/spaceship.svg";
-    hullBox.className = 'hullBox';
-    hullBox.style.width = "100px";
-    hullBox.style.height = "100px";
-    firstBox.appendChild(hullBox);
+    addEquipment();
 } 
 
 function createLoadBar()
