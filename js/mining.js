@@ -71,12 +71,14 @@ function hitOrMiss(planet)
 		var index;
 		for(var i = 0; i < planet.elementList.length; ++i)
 		{
-			if (randChance < planet.specificRarity[i] && element === "none")
+			if (randChance < planet.specificRarity[i] && element === "none"
+				&& player.equipment[2].depth >= planet.elementList[i].depth)
 			{
 				element = planet.elementList[i];
 				index = i;
 			}
-			else if (randChance < planet.specificRarity[i]) 
+			else if (randChance < planet.specificRarity[i]
+				&& player.equipment[2].depth >= planet.elementList[i].depth) 
 			{
 				if(planet.specificRarity[i] < planet.specificRarity[index])
 				{

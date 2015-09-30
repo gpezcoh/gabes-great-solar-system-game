@@ -1,6 +1,6 @@
 var playerHull = new equipment(0,"Cheap Hull",1);
 var playerEngine = new equipment(1,"Cheap Engine",1);
-var playerDrill = new equipment(2,"Cheap Drill",1);
+var playerDrill = new equipment(2,"Cheap Drill",2);
 var playerFuelTank = new equipment(3,"Small Fuel Tank",1);
 var playerLanguageTranslator = new equipment(4,"Cheap Language Translator",1);
 var playerCargoBay = new equipment(5,"Small Cargo Bay",1);

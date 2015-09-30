@@ -20,6 +20,10 @@ var planetBoxIconList = [];
 var inventory;
 var shipEquipment;
 var equipmentPointer;
+var comms;
+var commsTextBox;
+var commsIndex;
+var breakLine;
 
 $(document).ready(function(){
       console.log('hello');

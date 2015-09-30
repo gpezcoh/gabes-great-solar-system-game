@@ -6,6 +6,7 @@
     createInventory(4,4);
     createShipEquipment(6);
     createLoadBar();
+    createComms();
  }
 
  function createHealthBar()
@@ -145,6 +146,23 @@ function createLoadBar()
     loadBarResults.style.top = getDocHeight() - 120 + "px";
     loadBarResults.style.left = document.body.clientWidth/2 + 50 + "px";
     interface.appendChild(loadBarResults);
+}
+
+function createComms()
+{
+    comms  = document.createElement('div');
+    comms.id = "comms";
+    comms.className = "comms";
+    comms.style.top = getDocHeight() - 200 + "px";
+    comms.style.left = document.body.clientWidth/2 - 300 + "px";
+    interface.appendChild(comms);
+    commsTextBox = document.createElement('div');
+    commsTextBox.id = "commsTextBox";
+    commsTextBox.className = "commsTextBox";
+    // commsTextBox.style.top = getDocHeight() - 120 + "px";
+    // commsTextBox.style.left = document.body.clientWidth/2 - 200 + "px";
+    commsTextBox.textContent = "Mining for Elements!";
+    comms.appendChild(commsTextBox);
 }
 
  function changeHealth(amount)
