@@ -1,3 +1,5 @@
+var messageSpeed = 80;
+
 function createComms()
 {
     comms  = document.createElement('div');
@@ -19,21 +21,25 @@ function createComms()
         commsAnswerBox.style.top = getDocHeight() - 300 + 50 * i + "px";
         comms.appendChild(commsAnswerBox);
     }
-    setMessages(testMessage,[testAnswer1,testAnswer2,testAnswer3,testAnswer4]);
+    clickAlert();
+    incomingMessage(1);
+    commsAlert  = document.createElement('div');
+    commsAlert.id = "commsAlert";
+    commsAlert.className = "commsAlert";
+    interface.appendChild(commsAlert);
 }
 
 function writingComms (message) {
     commsIndex = 0;
-    var testInterval = setInterval(function() {writeQuestion(thisMessage.body,testInterval);},100);
+    var testInterval = setInterval(function() {writeQuestion(thisMessage.body,testInterval);},messageSpeed);
 }
 
 function writeQuestion(message,testInterval)
 {
-    console.log(message.length)
     if(commsIndex === message.length)
     {
         clearInterval(testInterval);
-        var testInterval = setInterval(function() {writeAnswers(thisMessage,testInterval);},100);
+        writeAnswers(thisMessage);
     }
     else
     {
@@ -45,14 +51,22 @@ function writeQuestion(message,testInterval)
         {
             breakLine = false;
             commsTextBox.textContent = "";
-            console.log("hello")
         }
         commsTextBox.textContent += message[commsIndex];
         ++commsIndex;
     }
 }
 
-function writeAnswers(message,testInterval)
+function writeAnswers(message)
 {
-    
+    for(var i = 0; i < 4; ++i)
+    {
+        if(message.answers[i].answerNumber != 0)
+        {
+            $("#commsAnswerBox-" + message.answers[i].answerNumber).animate({ opacity: 1},700);
+            var answerBox = document.getElementById("commsAnswerBox-" + (i + 1));
+            answerBox.textContent = message.answers[i].body;
+        }
+    }
+    $("#interface").css({pointerEvents : "auto"});
 }

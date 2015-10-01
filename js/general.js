@@ -24,6 +24,8 @@ var comms;
 var commsTextBox;
 var commsIndex;
 var breakLine;
+var commsAlert;
+var currentMessage = 0;
 
 $(document).ready(function(){
       console.log('hello');
