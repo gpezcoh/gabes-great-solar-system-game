@@ -326,8 +326,8 @@ body{
 	background-color: white;
 }
 
-.commsAlert{
-	z-index: 3;
+.alert{
+	z-index: 2;
 	position: fixed;
 	background-color: #F79F81;
 	width: 50px;
@@ -336,3 +336,8 @@ body{
 	left: 100px;
 	top: 100px;
 }
+
+.alert:hover{
+	background-color: red;
+
+	}

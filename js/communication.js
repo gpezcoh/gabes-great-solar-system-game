@@ -21,12 +21,12 @@ function createComms()
         commsAnswerBox.style.top = getDocHeight() - 300 + 50 * i + "px";
         comms.appendChild(commsAnswerBox);
     }
+    alert  = document.createElement('div');
+    alert.id = "alert";
+    alert.className = "alert";
+    interface.appendChild(alert);
     clickAlert();
     incomingMessage(1);
-    commsAlert  = document.createElement('div');
-    commsAlert.id = "commsAlert";
-    commsAlert.className = "commsAlert";
-    interface.appendChild(commsAlert);
 }
 
 function writingComms (message) {
