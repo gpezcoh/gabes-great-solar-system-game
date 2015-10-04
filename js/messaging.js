@@ -55,8 +55,9 @@ function incomingMessage(number)
 
 function clickAlert()
 {
-	$("#interface").css({pointerEvents : "auto"});
+	// $("#interface").css({pointerEvents : "auto"});
 	$("#alert").click(function () {
+		$("#comms").css({ display: "auto"});
 		setMessages(testMessage,[testAnswer1,testAnswer2,testAnswer3,testAnswer4]);
 	});
 }
