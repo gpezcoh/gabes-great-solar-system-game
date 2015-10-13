@@ -25,8 +25,7 @@ function createComms()
     alert.id = "alert";
     alert.className = "alert";
     interface.appendChild(alert);
-    clickAlert();
-    incomingMessage(1);
+    // clickAlert();
 }
 
 function writingComms (message) {

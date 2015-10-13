@@ -24,6 +24,7 @@ function setMessages(message, answerList)
 	thisMessage.answerNumber = answerList.length;
 	thisMessage.answers = setAnswers(answerList);
 	writingComms(thisMessage);
+	$("#comms").css({ display: "inline"});
 }
 
 function setAnswers(answerList)
@@ -49,15 +50,19 @@ function incomingMessage(number)
 	switch(number){
 		case 1:
 			currentMessage = 1;
+			$("#alert").animate({ opacity: 1},700);
+			$("#alert").click(function () {
+				setMessages(testMessage,[testAnswer1,testAnswer2,testAnswer3,testAnswer4]);
+			});
 		    break;
 	}
 }
 
-function clickAlert()
-{
-	// $("#interface").css({pointerEvents : "auto"});
-	$("#alert").click(function () {
-		$("#comms").css({ display: "auto"});
-		setMessages(testMessage,[testAnswer1,testAnswer2,testAnswer3,testAnswer4]);
-	});
-}
+// function clickAlert()
+// {
+// 	// $("#interface").css({pointerEvents : "auto"});
+// 	$("#alert").click(function () {
+// 		$("#comms").css({ display: "auto"});
+		
+// 	});
+// }

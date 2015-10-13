@@ -335,6 +335,7 @@ body{
 	border-radius: 50%;
 	left: 100px;
 	top: 100px;
+	opacity: 0;
 }
 
 .alert:hover{
