@@ -57,7 +57,7 @@ function allowMovement()
  	addPlanetBoxes();
  	$("#interface").css({pointerEvents : "auto"});
  	zoomIn(1000,player.currentGalaxy,2000);
- 	incomingMessage(1);
+ 	incomingMessage(testMessage);
  }
 
  function adjustForZoom()

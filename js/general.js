@@ -26,6 +26,8 @@ var commsIndex;
 var breakLine;
 var alert;
 var currentMessage = 0;
+var answer;
+var testInterval;
 
 $(document).ready(function(){
       console.log('hello');

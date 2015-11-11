@@ -19,6 +19,7 @@ function Planet(size, orbit)
 	this.elementList = [];
 	this.specificRarity = [];
 	this.totalRarity = 0;
+	this.shop = false;
 }
 
 function createPlanets(currentGalaxy)
@@ -44,15 +45,11 @@ function createPlanets(currentGalaxy)
 		createVisiblePlanets(tempPlanet,tempPlanetDiv);
 		currentGalaxy.correspondingDiv.appendChild(tempPlanetDiv);
 		currentGalaxy.planetOverlap += tempPlanet.size;
-		// var tempPlanetLabel = document.createElement('div');
-		// tempPlanetLabel.className = "planetLabel";
-		// tempPlanetLabel.textContent = "planet " + (i + 1);
-		// tempPlanetLabel.id = "planet " + (i + 1);
-		// tempPlanet.label = tempPlanetLabel;
-		// planetLabelPosition(tempPlanet);
-		// currentGalaxy.correspondingDiv.appendChild(tempPlanetLabel);
 	}
 	currentGalaxy.hasPlanetsYet = 1;
+	var tempShop = Math.abs(Math.round(Math.random()*currentGalaxy.planetList.length) - 1);
+	currentGalaxy.planetList[tempShop].shop = new Shop();
+	$("#planetBoxText-" + tempShop).css({ color : "yellow"});
 }
 
 function createVisiblePlanets(planet,planetDiv)
@@ -71,14 +68,6 @@ function randomPlanetStart(planet,planetDiv)
 	planetDiv.style.left = planet.xPos + "px";
 }
 
-// function planetLabelPosition(planet)
-// {
-// 	var labelXPos = planet.galaxy.size/2 - planet.size/2 + planet.orbit;
-// 	var labelYPos = planet.galaxy.size/2 - planet.size/2 - player.currentGalaxy.planetOverlap*2;
-// 	planet.label.style.top = labelYPos + "px";
-// 	planet.label.style.left = labelXPos + "px";
-// }
- 
  function movePlanets(galaxy)
  {
  	var yMove;
@@ -93,8 +82,6 @@ function randomPlanetStart(planet,planetDiv)
 	 		galaxy.planetList[i].correspondingDiv.style.top = galaxy.planetList[i].yPos + "px";
 	 		galaxy.planetList[i].xPos = xMove;
 	 		galaxy.planetList[i].correspondingDiv.style.left = galaxy.planetList[i].xPos + "px";
-	 		// galaxy.planetList[i].label.style.top = yMove + "px";
-	 		// galaxy.planetList[i].label.style.left = xMove + "px";
 	 		galaxy.planetList[i].movementCounter += galaxy.planetList[i].movementDirection * galaxy.planetList[i].speed;
  		}
  	}
@@ -210,6 +197,9 @@ function goToPlanet(div)
 			{
 				player.currentPlanet.canMove = true;
 				player.currentPlanet = tempPlanet;
+			}
+			if(player.currentPlanet.shop){
+				incomingMessage(shopMessage);
 			}
 		}
 		player.onAPlanet = true;

@@ -1,8 +1,10 @@
-function message()
+function message(body,answerNumber)
 {
-	this.body;
-	this.answerNumber;
+	this.body = body;
+	this.answerNumber = answerNumber;
 	this.answers = [];
+	this.child;
+	this.followup;
 }
 
 var thisMessage = new message();
@@ -11,58 +13,53 @@ var answer2 = new message();
 var answer3 = new message();
 var answer4 = new message();
 var listOfAnswers = [answer1,answer2,answer3,answer4];
-var testMessage = "Hello, I'm a test message! Do you understand?"
-var testAnswer1 = "Sure do!";
-var testAnswer2 = "Hell yeah!";
-var testAnswer3 = "You bet!";
-var testAnswer4 = "bruh";
 
+var testMessage = createMessage("Hello, I'm a test message! Do you understand?",0)
+var testAnswer1 = createMessage("Sure do!",1)
+var testAnswer2 = createMessage("Hell yeah!",2)
+var testAnswer3 = createMessage("You bet!",3)
+var testAnswer4 = createMessage("bruh",4)
+testMessage.answers = [testAnswer1,testAnswer2,testAnswer3,testAnswer4];
 
-function setMessages(message, answerList)
+function createMessage(string,num){
+	return new message(string,num);
+}
+
+function setMessages(message)
 {
-	thisMessage.body = message;
-	thisMessage.answerNumber = answerList.length;
-	thisMessage.answers = setAnswers(answerList);
+	thisMessage = message;
+	thisMessage.answerNumber = message.answers.length;
+	thisMessage.answers = message.answers;
 	writingComms(thisMessage);
 	$("#comms").css({ display: "inline"});
+	$("#alert").animate({ opacity: 0},700);
 }
 
-function setAnswers(answerList)
+function incomingMessage(message)
 {
-	for(var i = 0; i < 4; ++i)
-	{
-		if(i < answerList.length)
-		{
-			listOfAnswers[i].body = answerList[i];
-			listOfAnswers[i].answerNumber = i + 1;
+	currentMessage = message;
+	$("#alert").animate({ opacity: 1},700);
+	$("#alert").click(function () {
+		setMessages(message);
+	});
+}
+
+function answered(){
+	for(var i = 1;i<5;++i){
+		document.getElementById("commsAnswerBox-" + i).textContent = "";
+		$("#commsAnswerBox-" + i).animate({ opacity: 0},700);
+	}
+	commsTextBox.textContent = "";
+	if(answer){
+		answer = currentMessage.answers[answer - 1];
+		if(answer.child){
+			setMessages(answer.child);
 		}
-		else
-		{
-			listOfAnswers[i].body = "";
-			listOfAnswers[i].answerNumber = 0;
+		else{
+			$("#comms").css({ display: "none"});
 		}
 	}
-	return listOfAnswers;
-}
-
-function incomingMessage(number)
-{
-	switch(number){
-		case 1:
-			currentMessage = 1;
-			$("#alert").animate({ opacity: 1},700);
-			$("#alert").click(function () {
-				setMessages(testMessage,[testAnswer1,testAnswer2,testAnswer3,testAnswer4]);
-			});
-		    break;
+	else{
+		$("#comms").css({ display: "none"});
 	}
 }
-
-// function clickAlert()
-// {
-// 	// $("#interface").css({pointerEvents : "auto"});
-// 	$("#alert").click(function () {
-// 		$("#comms").css({ display: "auto"});
-		
-// 	});
-// }

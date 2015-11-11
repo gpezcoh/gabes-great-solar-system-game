@@ -1,5 +1,3 @@
-//   nIntervId = setInterval(moveAi, 500);
-
 
 function keyPresses(event)
 {

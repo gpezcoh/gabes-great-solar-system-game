@@ -28,17 +28,20 @@ function createComms()
     // clickAlert();
 }
 
+var testInterval;
 function writingComms (message) {
     commsIndex = 0;
-    var testInterval = setInterval(function() {writeQuestion(thisMessage.body,testInterval);},messageSpeed);
+    clearInterval(testInterval);
+    testInterval = setInterval(writeQuestion,messageSpeed);
 }
 
-function writeQuestion(message,testInterval)
+function writeQuestion()
 {
-    if(commsIndex === message.length)
+    if(commsIndex === thisMessage.body.length)
     {
         clearInterval(testInterval);
         writeAnswers(thisMessage);
+        return;
     }
     else
     {
@@ -46,26 +49,36 @@ function writeQuestion(message,testInterval)
         {
             breakLine = true;
         }
-        if(breakLine && message[commsIndex] === " ")
+        if(breakLine && thisMessage.body[commsIndex] === " ")
         {
             breakLine = false;
             commsTextBox.textContent = "";
         }
-        commsTextBox.textContent += message[commsIndex];
+        commsTextBox.textContent += thisMessage.body[commsIndex];
         ++commsIndex;
     }
 }
 
 function writeAnswers(message)
 {
-    for(var i = 0; i < 4; ++i)
+    
+    console.log(message)
+    for(var i = 0; i < message.answers.length; ++i)
     {
-        if(message.answers[i].answerNumber != 0)
-        {
-            $("#commsAnswerBox-" + message.answers[i].answerNumber).animate({ opacity: 1},700);
-            var answerBox = document.getElementById("commsAnswerBox-" + (i + 1));
-            answerBox.textContent = message.answers[i].body;
-        }
+        $("#commsAnswerBox-" + message.answers[i].answerNumber).animate({ opacity: 1},700);
+        var answerBox = document.getElementById("commsAnswerBox-" + (i + 1));
+        answerBox.textContent = message.answers[i].body;
     }
     $("#interface").css({pointerEvents : "auto"});
+    if(message.followup){
+        followup(message.followup);
+        answer = null;
+        answered();
+    }
+    $(".commsAnswerBox").click(function(){
+        if(this.style.opacity > "0"){
+            answer = this.id.split("-").pop();
+            answered();
+        }
+    });
 }
